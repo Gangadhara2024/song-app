@@ -1,0 +1,21 @@
+.music-player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #000;
+  img {
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+  }
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    p {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  }
+}

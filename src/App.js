@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./Redux/store";
+import { Playlists } from "./components/Playlists";
+import { Songslist } from "./components/Songslist";
+import { Likedsongs } from "./components/Likedsongs";
+import { Sidebar } from "./components/Sidebar";
+import { Playlist } from "./components/Playlist";
+import { Musicplayer } from "./components/Musicplayer";
 
 function App() {
+  const PlayerLayout = () => {
+    return (
+      <div className="app">
+        <Sidebar />
+        <Outlet />
+        <Musicplayer />
+      </div>
+    );
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="" element={<PlayerLayout />}>
+            <Route path="/playlists" element={<Playlists />} />
+            <Route path="/playlist/:playListId" element={<Playlist />} />
+            <Route path="/liked-songs" element={<Likedsongs />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
