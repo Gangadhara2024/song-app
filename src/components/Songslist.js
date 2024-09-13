@@ -7,7 +7,6 @@ export const Songslist = ({ songs, imageUrl }) => {
     (state) => state.playerInfo
   );
   const dispatch = useDispatch();
-
   const playPauseSong = (song) => {
     dispatch({ type: "update_player", payload: { song, imageUrl } });
   };
